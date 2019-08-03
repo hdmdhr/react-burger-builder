@@ -20,10 +20,16 @@ class BurgerBuilder extends Component {
             cheese: 0,
             meat: 0
         },
-        totalPrice: 4
+        totalPrice: 4,
+        purchaseable: false
     }
 
     // METHODS
+    updatePurchaseableState(ingredients) {
+        const totalIngredientsNum = Object.entries(ingredients).reduce((prev, curr) => ['total', prev[1] + curr[1]], ['total', 0])[1]
+        this.setState({purchaseable: totalIngredientsNum > 0})
+    }
+
     addIngredientHandler = type => {
         const oldCount = this.state.ingredients[type]
         const newCount = oldCount + 1
@@ -32,6 +38,7 @@ class BurgerBuilder extends Component {
         const priceAddition = INGREDIENT_PRICES[type]
         const newPrice = this.state.totalPrice + priceAddition
         this.setState({ totalPrice: newPrice, ingredients: clonedIngredients })
+        this.updatePurchaseableState(clonedIngredients)
     }
 
     removeIngredientHandler = type => {
@@ -42,8 +49,10 @@ class BurgerBuilder extends Component {
         const priceSubtraction = INGREDIENT_PRICES[type]
         const newPrice = this.state.totalPrice - priceSubtraction
         this.setState({ totalPrice: newPrice, ingredients: clonedIngredients })
+        this.updatePurchaseableState(clonedIngredients)
     }
 
+    // RENDER JSX
     render () {
         const tooLessIndividualIngredient = {...this.state.ingredients}
         for (let key in tooLessIndividualIngredient) {
@@ -53,7 +62,7 @@ class BurgerBuilder extends Component {
 
         const tooManyIndividualIngredient = {...this.state.ingredients}
         for (let key in tooManyIndividualIngredient) {
-            tooManyIndividualIngredient[key] = tooManyIndividualIngredient[key] > 3 
+            tooManyIndividualIngredient[key] = tooManyIndividualIngredient[key] > 5 
         }
         
         const totalIngredientsNum = Object.entries(this.state.ingredients).reduce((prev, curr) => {return ['total', prev[1] + curr[1]]})[1]
@@ -67,7 +76,8 @@ class BurgerBuilder extends Component {
                     disableLess={tooLessIndividualIngredient}
                     disableMore={tooManyIndividualIngredient}
                     disableEveryMore={tooManyTotalIngredients}
-                    price={this.state.totalPrice} />
+                    price={this.state.totalPrice}
+                    purchaseable={this.state.purchaseable} />
             </Aux>
         );
     }

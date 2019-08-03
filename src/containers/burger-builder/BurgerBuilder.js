@@ -45,18 +45,29 @@ class BurgerBuilder extends Component {
     }
 
     render () {
-        const ingredientsLess0 = {...this.state.ingredients}
-        for (let key in ingredientsLess0) {
-            ingredientsLess0[key] = ingredientsLess0[key] <= 0
+        const tooLessIndividualIngredient = {...this.state.ingredients}
+        for (let key in tooLessIndividualIngredient) {
+            tooLessIndividualIngredient[key] = tooLessIndividualIngredient[key] <= 0
         }
-        console.log(ingredientsLess0);
+        console.log(tooLessIndividualIngredient);
+
+        const tooManyIndividualIngredient = {...this.state.ingredients}
+        for (let key in tooManyIndividualIngredient) {
+            tooManyIndividualIngredient[key] = tooManyIndividualIngredient[key] > 3 
+        }
         
+        const totalIngredientsNum = Object.entries(this.state.ingredients).reduce((prev, curr) => {return ['total', prev[1] + curr[1]]})[1]
+        const tooManyTotalIngredients = totalIngredientsNum > 5
+
         return (
             <Aux>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}
-                    disabled={ingredientsLess0} />
+                    disableLess={tooLessIndividualIngredient}
+                    disableMore={tooManyIndividualIngredient}
+                    disableEveryMore={tooManyTotalIngredients}
+                    price={this.state.totalPrice} />
             </Aux>
         );
     }

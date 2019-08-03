@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Auxiliary';
 import Burger from '../../components/burger/Burger'
 import BuildControls from '../../components/burger/build-controls/BuildControls'
+import Modal from '../../components/ui/modal/Modal'
+import OrderSummary from '../../components/burger/order-summary/OrderSummary'
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -58,7 +60,7 @@ class BurgerBuilder extends Component {
         for (let key in tooLessIndividualIngredient) {
             tooLessIndividualIngredient[key] = tooLessIndividualIngredient[key] <= 0
         }
-        console.log(tooLessIndividualIngredient);
+        console.table(tooLessIndividualIngredient);
 
         const tooManyIndividualIngredient = {...this.state.ingredients}
         for (let key in tooManyIndividualIngredient) {
@@ -70,6 +72,9 @@ class BurgerBuilder extends Component {
 
         return (
             <Aux>
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients} />
+                </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls ingredientAdded={this.addIngredientHandler}
                     ingredientRemoved={this.removeIngredientHandler}

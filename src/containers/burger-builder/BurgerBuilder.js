@@ -13,6 +13,7 @@ const INGREDIENT_PRICES = {
     meat: 1.0
 }
 
+/// Stateful component contains Burger, BurgerControls, Modal<OrderSummary>
 class BurgerBuilder extends Component {
     // STATE
     state = {
@@ -87,6 +88,7 @@ class BurgerBuilder extends Component {
             <Aux>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <OrderSummary ingredients={this.state.ingredients} 
+                    price={this.state.totalPrice}
                     purchaseCanceled={this.purchaseCancelHandler} 
                     purchaseContinued={this.purchaseContinueHandler} />
                 </Modal>

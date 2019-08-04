@@ -3,7 +3,10 @@ import React from 'react'
 import Aux from '../../../hoc/Auxiliary'
 import Button from '../../ui/button/Button'
 
+/// Shows ingredients list, total price, cancel & continue buttons
+// Prop List: ingredients | price | purchaseCanceled | purchaseContinued
 const OrderSummary = props => {
+
 	const ingredientSummaryList = Object.entries(props.ingredients).map(arr => 
 		<li key={arr[0]}>
 			<span style={{textTransform: 'capitalize'}}>{arr[0]}</span>: {arr[1]}
@@ -17,6 +20,7 @@ const OrderSummary = props => {
 			<ul>
 				{ingredientSummaryList}
 			</ul>
+			<p><strong>Total Price: ${props.price.toFixed(2)}</strong></p>
 			<p>Continue to checkout?</p>
 			<Button btnType='Danger' clicked={props.purchaseCanceled}>CANCEL</Button>
 			<Button btnType='Success' clicked={props.purchaseContinued}>CONTINUE</Button>

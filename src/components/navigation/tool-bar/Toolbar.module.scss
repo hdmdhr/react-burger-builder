@@ -1,0 +1,20 @@
+// Mobile First styling
+
+.Toolbar {
+	height: 56px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #703b09;
+	display: flex;  // place elems horizontally next to each other
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	box-sizing: border-box;
+	z-index: 99;  // smaller than Backdrop
+
+	nav {
+		height: 100%;
+	}
+}

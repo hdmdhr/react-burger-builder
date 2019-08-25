@@ -74,7 +74,7 @@ class BurgerBuilder extends Component {
         for (let key in tooLessIndividualIngredient) {
             tooLessIndividualIngredient[key] = tooLessIndividualIngredient[key] <= 0
         }
-        console.table(tooLessIndividualIngredient);
+        // console.table(tooLessIndividualIngredient);
 
         const tooManyIndividualIngredient = {...this.state.ingredients}
         for (let key in tooManyIndividualIngredient) {

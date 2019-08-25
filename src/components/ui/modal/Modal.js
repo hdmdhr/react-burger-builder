@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Aux from '../../../hoc/Auxiliary'
+import Aux from '../../../hoc/auxilary/Auxiliary'
 import Backdrop from '../backdrop/Backdrop'
 import styles from './Modal.module.scss'
 

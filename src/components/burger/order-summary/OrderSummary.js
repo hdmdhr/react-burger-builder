@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Aux from '../../../hoc/Auxiliary'
+import Aux from '../../../hoc/auxilary/Auxiliary'
 import Button from '../../ui/button/Button'
 
 /// Shows ingredients list, total price, cancel & continue buttons

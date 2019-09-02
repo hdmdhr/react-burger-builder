@@ -5,6 +5,7 @@ import Burger from '../../components/burger/Burger'
 import BuildControls from '../../components/burger/build-controls/BuildControls'
 import Modal from '../../components/ui/modal/Modal'
 import OrderSummary from '../../components/burger/order-summary/OrderSummary'
+import axiosInstance from '../../axios-orders';
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -65,7 +66,24 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        alert('Continue to pay!')
+        // alert('Continue to pay!')
+        const order = {
+            ingredients: this.state.ingredients,
+            price: this.state.totalPrice,  // in production, should calculate price on server side
+            customer: {
+                name: 'Daniel Hu',
+                address: '123 st 321 ave',
+                zip: '12345',
+                email: '1@2.com'
+            },
+            deliveryMethod: 'fastest'
+        }
+        axiosInstance.post('/orders.json', order)
+        .then(res=>{
+            console.log(res);
+        }).catch(error=>{
+            console.log(error);
+        })
     }
 
     // RENDER JSX

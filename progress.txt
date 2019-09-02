@@ -1,0 +1,5 @@
+10.205-207
+Create Firebase Real Time Database, get url.
+
+10.208-209
+npm install axios, create a global instance, send POST request to Firebase.

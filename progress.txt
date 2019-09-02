@@ -3,3 +3,7 @@ Create Firebase Real Time Database, get url.
 
 10.208-209
 npm install axios, create a global instance, send POST request to Firebase.
+
+210
+Show a spinner while sending request. Grab spinner css from web, render spinner when loading state is true. Modify condition in Modal's shouldComponentUpdate lifecycle to correctly rerender Modal to show spinner.
+

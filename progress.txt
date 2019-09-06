@@ -9,3 +9,6 @@ Show a spinner while sending request. Grab spinner css from web, render spinner 
 
 211
 Handle HTTP errors. Create a WithErrorHandler component which returns a function that can wraps other component. Use axios.interceptors to handle errors. Click on Modal to dismiss error message.
+
+212
+Move state.ingredients to Firebase, retrieve it from server when app loads. Update code to avoid null errors. In WithErrorHandler, Change componentDidMount to WillMount(deprecated, can consider using constructor lifecycle), to handle network connection error.

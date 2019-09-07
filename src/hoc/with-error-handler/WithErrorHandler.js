@@ -12,15 +12,23 @@ const WithErrorHandler = (WrappedComponent, axios) => {
 
         // Lifecycles
         componentWillMount() {
-            axios.interceptors.request.use(req => {
+          // create a class property on the fly to store interceptor reference 
+            this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null})
                 return req
             })
 
-            axios.interceptors.response.use(res => res, error => {
+            this.resInterceptor = axios.interceptors.response.use(res => res, error => {
                 this.setState({error: error})
                 
             })
+        }
+
+        componentWillUnmount() {
+          console.log('@DEBUG: Will Unmount', this.reqInterceptor, this.resInterceptor);
+          
+          axios.interceptors.request.eject(this.reqInterceptor)
+          axios.interceptors.request.eject(this.resInterceptor)
         }
 
         // Handlers

@@ -12,3 +12,6 @@ Handle HTTP errors. Create a WithErrorHandler component which returns a function
 
 212
 Move state.ingredients to Firebase, retrieve it from server when app loads. Update code to avoid null errors. In WithErrorHandler, Change componentDidMount to WillMount(deprecated, can consider using constructor lifecycle), to handle network connection error.
+
+213
+To avoid repetitive interceptors & memory leak, remove interceptors when WithErrorHandler's anonymouse class component get unmounted. Write some testing code in App.js, will remove soon.

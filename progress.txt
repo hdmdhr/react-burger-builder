@@ -1,7 +1,7 @@
 10.205-207
 Create Firebase Real Time Database, get url.
 
-10.208-209
+208-209
 npm install axios, create a global instance, send POST request to Firebase.
 
 210
@@ -15,3 +15,8 @@ Move state.ingredients to Firebase, retrieve it from server when app loads. Upda
 
 213
 To avoid repetitive interceptors & memory leak, remove interceptors when WithErrorHandler's anonymouse class component get unmounted. Write some testing code in App.js, will remove soon.
+
+10.213.a
+Remove testing code in App.js.
+
+11.

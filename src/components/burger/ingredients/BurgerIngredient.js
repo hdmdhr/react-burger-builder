@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './BurgerIngredient.module.css';
 import PropTypes from 'prop-types';
 
+// Prop List: type
 class BurgerIngredient extends Component {
     render() {    
 
